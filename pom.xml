@@ -88,6 +88,13 @@ dependencyManagement实际不引入jar包，所以子项目还是要显式的声
         <artifactId>lombok</artifactId>
         <version>${lombok.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.github.xiaoymin</groupId>
+        <artifactId>knife4j-dependencies</artifactId>
+        <version>2.0.2</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 

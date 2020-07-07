@@ -16,3 +16,10 @@ mybatis:
   type-aliases-package: com.hzm.springcloud.entity
   configuration:
     map-underscore-to-camel-case: true
+
+knife4j:
+  basic:
+    enable: true
+    username: admin
+    password: 123456
+

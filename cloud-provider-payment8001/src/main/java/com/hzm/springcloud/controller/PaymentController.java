@@ -3,6 +3,7 @@ package com.hzm.springcloud.controller;
 import com.hzm.springcloud.entity.CommonResult;
 import com.hzm.springcloud.entity.Payment;
 import com.hzm.springcloud.service.PaymentService;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import javax.annotation.Resource;
 @RestController
 @Slf4j
 @RequestMapping("payment")
+@Api("支付模块")
 public class PaymentController {
 
     @Resource
