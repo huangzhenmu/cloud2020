@@ -26,7 +26,7 @@ public class PaymentController {
 
     @ApiOperation("创建支付订单")
     @PostMapping(value = "create")
-    public CommonResult create(Payment payment){
+    public CommonResult create(@RequestBody Payment payment){
         int result = paymentService.create(payment);
         log.info("****插入结果：{}",result);
         if (result > 0){
@@ -36,8 +36,9 @@ public class PaymentController {
         }
     }
 
-    @GetMapping(value = "getPaymentById")
+    @GetMapping(value = "get")
     public CommonResult getPaymentById(Long id){
+        System.out.println();
         Payment payment = paymentService.getPaymentById(id);
         if (payment != null){
             return new CommonResult(200,"查询成功",payment);
