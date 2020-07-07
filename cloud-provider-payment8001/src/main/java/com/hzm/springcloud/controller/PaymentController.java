@@ -4,6 +4,7 @@ import com.hzm.springcloud.entity.CommonResult;
 import com.hzm.springcloud.entity.Payment;
 import com.hzm.springcloud.service.PaymentService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
+    @ApiOperation("创建支付订单")
     @PostMapping(value = "create")
     public CommonResult create(Payment payment){
         int result = paymentService.create(payment);
@@ -35,10 +37,10 @@ public class PaymentController {
     }
 
     @GetMapping(value = "getPaymentById")
-    public CommonResult getPaymentById(@PathVariable("id") Long id){
+    public CommonResult getPaymentById(Long id){
         Payment payment = paymentService.getPaymentById(id);
         if (payment != null){
-            return new CommonResult(200," 查询成功",payment);
+            return new CommonResult(200,"查询成功",payment);
         }else {
             return new CommonResult(444,"查询不到对应数据");
         }

@@ -30,7 +30,7 @@ public class SwaggerConfiguration {
                 .apiInfo(apiInfo())         //定义api文档汇总信息
                 .select()
                 .apis(RequestHandlerSelectors
-                        .basePackage("com.dave.controller"))  // 指定生成api文档的包
+                        .basePackage("com.hzm.springcloud.controller"))  // 指定生成api文档的包
                 .paths(PathSelectors.any())     // 指定所有路径
                 .build();
     }
