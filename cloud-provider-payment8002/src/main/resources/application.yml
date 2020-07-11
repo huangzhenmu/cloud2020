@@ -1,0 +1,21 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: cloud-payment-service
+  profiles:
+    active: dev
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.hzm.springcloud.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+knife4j:
+  basic:
+    enable: true
+    username: admin
+    password: 123456
+
