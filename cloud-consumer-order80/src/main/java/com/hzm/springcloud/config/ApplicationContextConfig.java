@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class ApplicationContextConfig {
     @Bean
-    @LoadBalanced //赋予resttemplate负载均衡的能力，否则只通过服务名称访问集群的服务是会报错的
+    //@LoadBalanced //赋予resttemplate负载均衡的能力，否则只通过服务名称访问集群的服务是会报错的
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }

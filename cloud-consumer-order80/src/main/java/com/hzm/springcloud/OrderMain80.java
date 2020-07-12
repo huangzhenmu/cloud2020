@@ -1,8 +1,10 @@
 package com.hzm.springcloud;
 
+import com.hzm.myrule.Myrule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
 /**
  * @author hzm
@@ -11,6 +13,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @SpringBootApplication
 @EnableEurekaClient
+//配置负载均衡规则
+//@RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = Myrule.class)
 public class OrderMain80 {
     public static void main(String[] args) {
         SpringApplication.run(OrderMain80.class,args);

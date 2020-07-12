@@ -31,7 +31,7 @@ public class PaymentController {
     @PostMapping(value = "create")
     public CommonResult create(@RequestBody Payment payment){
         int result = paymentService.create(payment);
-        log.info("****插入结果：{}",result);
+        log.info("****插入结果******：{}",result);
         if (result > 0){
             return new CommonResult(200,"新增成功.serverPort:"+serverPort,result);
         }else {
@@ -48,5 +48,10 @@ public class PaymentController {
         }else {
             return new CommonResult(444,"查询不到对应数据");
         }
+    }
+
+    @GetMapping(value = "lb")
+    public String getPaymentLB(){
+        return serverPort;
     }
 }

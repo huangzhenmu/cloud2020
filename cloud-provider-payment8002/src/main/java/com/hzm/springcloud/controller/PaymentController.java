@@ -50,4 +50,9 @@ public class PaymentController {
             return new CommonResult(444,"查询不到对应数据");
         }
     }
+
+    @GetMapping(value = "lb")
+    public String getPaymentLB(){
+        return serverPort;
+    }
 }
