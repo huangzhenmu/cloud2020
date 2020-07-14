@@ -5,3 +5,11 @@ eureka:
     register-with-eureka: false
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+#OpenFeign的默认请求等待时间是1秒，如果服务响应超过一秒则报错
+ribbon:
+  ReadTimeout: 5000 #建立连接所需的时间
+  ConnectTimeout: 5000 #建立连接后从服务器读取到可用资源所用的时间
+logging:
+  level:
+    #feign日志以什么级别监控哪个接口
+    com.hzm.springcloud.service.PaymentFeignService: debug

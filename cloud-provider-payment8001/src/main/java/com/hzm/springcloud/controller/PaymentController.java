@@ -54,4 +54,8 @@ public class PaymentController {
     public String getPaymentLB(){
         return serverPort;
     }
+
+    public String paymentFeignTimeout(){
+        return "";
+    }
 }
