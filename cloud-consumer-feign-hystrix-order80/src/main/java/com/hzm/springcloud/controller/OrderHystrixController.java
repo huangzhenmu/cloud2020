@@ -2,6 +2,7 @@ package com.hzm.springcloud.controller;
 
 import com.hzm.springcloud.entity.CommonResult;
 import com.hzm.springcloud.service.PaymentHystrixService;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("consumer")
 @Slf4j
+@DefaultProperties(defaultFallback = "gloadFallback")//配置全局服务降级方法gloadFallback
 public class OrderHystrixController {
     @Resource
     private PaymentHystrixService paymentHystrixService;
@@ -38,6 +40,11 @@ public class OrderHystrixController {
 
     public CommonResult timouthandler(){
         String result = "消费者端80的timouthandler接口调用成功,这是fallback方法";
+        return new CommonResult(444,"fallback",result);
+    }
+
+    public CommonResult gloadFallback(){
+        String result = "消费者端80的gloadFallback接口调用成功,这是全局fallback方法";
         return new CommonResult(444,"fallback",result);
     }
 }
