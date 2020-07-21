@@ -37,7 +37,22 @@ public class ProviderService {
         return "端口："+serverPort+"的timeout接口调用成功,耗时（秒）："+timeout;
     }
 
+    //服务降级方法
     public String timouthandler(){
         return "端口："+serverPort+"的timouthandler接口调用成功,这是fallback方法";
+    }
+
+    @HystrixCommand(fallbackMethod = "rongduan",commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.enabled",value = "true"),//是否开启熔断
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"),//时间单位内访问数达到此阈值才触发熔断
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "10000"),//时间间隔
+            @HystrixProperty(name="circuitBreaker.errorThresholdPercentage",value = "60")//单位时间内的接口访问失败率
+    })
+    public String success(int id){
+        return "调用success方法成功。id:"+id;
+    }
+    //服务熔断方法
+    public String rongduan(){
+        return "端口："+serverPort+"的rongduan接口调用成功,这是熔断方法";
     }
 }
